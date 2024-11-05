@@ -28,5 +28,5 @@ jobs:
         with:
           file: Dockerfile.watcher
           push: true
-          tags: blolol/filebot-watcher:latest
+          tags: ghcr.io/blolol/filebot-watcher:latest
         if: steps.base-image-update-check.outputs.needs-updating == 'true'
