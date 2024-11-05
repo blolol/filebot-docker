@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up QEMU for multi-platform builds
+        uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Log into GitHub Container Registry
@@ -27,6 +29,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           file: Dockerfile.watcher
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/blolol/filebot-watcher:latest
         if: steps.base-image-update-check.outputs.needs-updating == 'true'
