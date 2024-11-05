@@ -1,0 +1,9 @@
+FROM rednoah/filebot:watcher
+
+LABEL org.opencontainers.image.source="https://github.com/blolol/filebot-docker"
+LABEL org.opencontainers.image.description="Blolol's custom FileBot watcher image"
+LABEL org.opencontainers.image.licenses=MIT
+
+RUN set -eux \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y jq
